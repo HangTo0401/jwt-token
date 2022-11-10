@@ -1,0 +1,11 @@
+webservice\JwtResponse.class
+webservice\JwtUserDetailsService.class
+webservice\HelloWorldController.class
+webservice\JwtTokenUtil.class
+webservice\JwtAuthenticationEntryPoint.class
+webservice\JwtAuthenticationController.class
+Application.class
+webservice\JwtRequestFilter.class
+webservice\WebSecurityConfig.class
+webservice\JwtRequest.class
+webservice\securityConfig.class
