@@ -1,5 +1,6 @@
 package webservice;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @RequestMapping(value = "rest")
+@Slf4j
 public class JwtAuthenticationController {
 
     @Autowired
@@ -25,12 +27,12 @@ public class JwtAuthenticationController {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createToken(@RequestBody JwtRequest jwtRequest) throws Exception {
-        System.out.println("createToken");
         authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
 
         final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(jwtRequest.getUsername());
 
         String jwtToken = jwtTokenUtil.generateToken(userDetails);
+        log.info("Generate token: " + jwtToken);
 
         return ResponseEntity.ok(new JwtResponse(jwtToken));
 
